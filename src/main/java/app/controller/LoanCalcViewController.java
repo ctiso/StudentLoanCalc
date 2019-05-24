@@ -39,6 +39,8 @@ public class LoanCalcViewController implements Initializable   {
 	
 	@FXML
 	private TextField AdditionalPayment;
+	@FXML
+	private Label Totalinterest;
 	
 	
 	
@@ -73,10 +75,10 @@ public class LoanCalcViewController implements Initializable   {
 		
 		double extraPayment=Double.parseDouble(AdditionalPayment.getText());
 		Loan myLoan= new Loan(dLoanAmount,interestRate,Term,extraPayment,date,CompoundType,futureValue);
-		//lblTotalPayemnts.setText(Double.toString(myLoan.getLoanAmount()));
-		lblTotalPayemnts.setText(myLoan.getTotalPayments());
+		lblTotalPayemnts.setText(myLoan.getTotalPayment());
 		System.out.println(localDate);
 		
+		Totalinterest.setText(myLoan.getTotalInterest());
 	}
 
 }

@@ -67,12 +67,20 @@ public class Loan {
 			return null;
 		}
 	}
-	public String getTotalPayments() {
-		int count=0;
-		for(Payment p: LoanPayments) {
-			count++;
+	
+	public String getTotalInterest() {
+		double sum=0;
+		for(Payment p:LoanPayments) {
+			sum+=p.getIPMT();
 		}
-		return ""+count;
+		return ""+(sum);
+	}
+	public String getTotalPayment() {
+		double sum=0;
+		for(Payment p:LoanPayments) {
+			sum+=p.getIPMT();
+		}
+		return ""+(sum+LoanAmount);
 	}
 	
 	

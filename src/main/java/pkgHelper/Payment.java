@@ -39,6 +39,9 @@ public class Payment {
 	public int getPayID() {
 		return PaymentID;
 	}
+	public double getIPMT() {
+		return IPMT;
+	}
 }
 	
 	
