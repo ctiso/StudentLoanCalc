@@ -33,6 +33,10 @@ public class Loan {
 			LoanPayments.add(p);
 			dRollingBalance=p.getBalance();
 			
+			System.out.print("PaymentNumber ");
+			System.out.print(iPaymentNum);
+			System.out.print(" ");
+			System.out.println(LoanPayments.getLast().getBalance());
 			
 			if(LoanPayments.getLast().getBalance()<=0) {
 				LoanPayments.getLast().ZeroBalance();
