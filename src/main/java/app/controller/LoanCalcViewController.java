@@ -74,6 +74,7 @@ public class LoanCalcViewController implements Initializable   {
 	
 	
 	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		NumCol.setCellValueFactory(new PropertyValueFactory<Payment,String>("PaymentID"));
