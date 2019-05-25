@@ -73,15 +73,17 @@ public class Loan {
 		for(Payment p:LoanPayments) {
 			sum+=p.getIPMT();
 		}
-		return ""+(sum);
+		return ""+Math.round(sum*100.0)/100.0;
 	}
 	public String getTotalPayment() {
 		double sum=0;
 		for(Payment p:LoanPayments) {
 			sum+=p.getIPMT();
 		}
-		return ""+(sum+LoanAmount);
+		return ""+(Math.round((sum+LoanAmount)*100.0)/100.0);
 	}
 	
-	
+	public LinkedList<Payment> getLoanPayment(){
+		return LoanPayments;
+	}
 }

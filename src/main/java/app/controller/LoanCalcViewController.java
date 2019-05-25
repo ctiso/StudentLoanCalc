@@ -4,8 +4,12 @@ import app.StudentCalc;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import pkgHelper.Loan;
+import pkgHelper.Payment;
 
 import java.net.URL;
 import java.time.Instant;
@@ -15,6 +19,8 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
 
@@ -41,6 +47,30 @@ public class LoanCalcViewController implements Initializable   {
 	private TextField AdditionalPayment;
 	@FXML
 	private Label Totalinterest;
+	
+	@FXML
+	private TableView<Payment> TableV;
+	
+	@FXML
+	private TableColumn<Payment,String> NumCol;
+	
+	@FXML
+	private TableColumn<Payment,String> DateCol;
+	
+	@FXML
+	private TableColumn<Payment,String> PayCol;
+	
+	@FXML
+	private TableColumn<Payment,String> AddPayCol;
+	
+	@FXML
+	private TableColumn<Payment,String> InterestCol;
+	
+	@FXML
+	private TableColumn<Payment,String> PrincipleCol;
+	
+	@FXML
+	private TableColumn<Payment,String> BalanceCol;
 	
 	
 	
@@ -79,8 +109,30 @@ public class LoanCalcViewController implements Initializable   {
 		System.out.println(localDate);
 		
 		Totalinterest.setText(myLoan.getTotalInterest());
+		setTable(myLoan, date);
 	}
 
+	public void setTable(Loan l, Date ld) {
+		LinkedList<Payment> myLoan = l.getLoanPayment();
+		ObservableList<Payment> list = FXCollections.observableArrayList(myLoan);
+		
+		NumCol.setCellValueFactory(new PropertyValueFactory<Payment,String>("PaymentID"));
+		
+		DateCol.setCellValueFactory(new PropertyValueFactory<Payment,String>("DueDate"));
+		
+		PayCol.setCellValueFactory(new PropertyValueFactory<Payment, String>("monthPay"));
+		
+		AddPayCol.setCellValueFactory(new PropertyValueFactory<Payment,String>("ExtraPayment"));
+		
+		InterestCol.setCellValueFactory(new PropertyValueFactory<Payment,String>("interest"));
+		PrincipleCol.setCellValueFactory(new PropertyValueFactory<Payment,String>("principle"));
+		
+		BalanceCol.setCellValueFactory(new PropertyValueFactory<Payment,String>("Balance"));
+
+		
+		
+		TableV.setItems(list);
+}
 }
 
 
