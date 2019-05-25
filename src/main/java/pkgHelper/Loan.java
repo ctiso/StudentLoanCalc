@@ -33,10 +33,6 @@ public class Loan {
 			LoanPayments.add(p);
 			dRollingBalance=p.getBalance();
 			
-			System.out.print("Payment Num ");
-			System.out.print(iPaymentNum);
-			System.out.print(" ");
-			System.out.println(LoanPayments.getLast().getBalance());
 			
 			if(LoanPayments.getLast().getBalance()<=0) {
 				LoanPayments.getLast().ZeroBalance();
@@ -56,6 +52,9 @@ public class Loan {
 	}
 	public double getExtraPayment() {
 		return ExtraPayment;
+	}
+	public String getAdditionalPayment() {
+		return ""+ExtraPayment;
 	}
 	public double getFutureValue() {
 		return FutureValue;
